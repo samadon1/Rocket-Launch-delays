@@ -1,4 +1,5 @@
 import streamlit as st
+from sklearn import preprocessing
 
 st.set_page_config(page_title='Rocket Lauch Delays', page_icon='https://assets.stickpng.com/images/58e911aceb97430e819064d8.png', layout='centered', initial_sidebar_state='auto')
 
@@ -69,11 +70,56 @@ condition = st.selectbox(
 # value = st.selectbox("Condition", options, format_func=lambda x: display[x])
 # condition = value
 
-st.sidebar.button('FINISH')
 
+predictions = [crew,
+high_temp,
+low_temp,
+ave_temp,
+hist_high_temp,
+hist_low_temp,
+hist_ave_temp,
+precipitation,
+hist_ave_precipitation,
+wind_direction,
+max_wind_speed,
+visibility,
+wind_speed,
+condition ]
 
+labels = ('crew',
+'high_temp',
+'low_temp',
+'ave_temp',
+'hist_high_temp',
+'hist_low_temp',
+'hist_ave_temp',
+'precipitation',
+'hist_ave_precipitation',
+'wind_direction',
+'max_wind_speed',
+'visibility',
+'wind_speed',
+'condition')
+import pandas as pd
+x = pd.Series(predictions, index = labels) 
 
+import random
+n = random.randint(0,1)
+pred = n
 
-# Crewed or Uncrewed	High Temp	Low Temp	Ave Temp	Temp at Launch Time	Hist High Temp	Hist Low Temp	Hist Ave Temp	Percipitation at Launch Time	Hist Ave Percipitation	Wind Direction	Max Wind Speed	Visibility	Wind Speed at Launch Time	Condition
+if st.sidebar.button('READY ?'):
+    if pred == 1:
+        st.sidebar.write('Go for Launch :thumbsup:')
+        st.balloons()
+    else: 
+        st.sidebar.write('Scrub the Launch :disappointed:')
+
+    
+
+## As part of the data cleaning process, we have to convert text data to numerical because computers understand only numbers
+#label_encoder = preprocessing.LabelEncoder()
+# label_encoder = preprocessing.LabelEncoder()
+# wind_direction = label_encoder.fit_transform(x.wind_direction)
+# condition = label_encoder.fit_transform(x.condition)
 
 #st.balloons()
