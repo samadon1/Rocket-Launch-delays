@@ -24,7 +24,7 @@ Under the hood, this project uses the tensorflow library to create a machine lea
 
 # Deployment
 To deploy to heroku navigate to the deployment directory.
-Login to your heroku(`heroku login`) account and run 
+Login to your heroku account (`heroku login`) and run 
  1. `git init'`
  2. `git add'`
  3. `git commit -m 'commit message'`
