@@ -1,0 +1,5 @@
+numpy==1.18.5
+tensorflow-cpu==2.2.0
+pandas==1.0.1
+streamlit==0.70.0
+scikit_learn==0.23.2
