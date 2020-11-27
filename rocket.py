@@ -7,7 +7,7 @@ st.write("""
 # Predict Rocket Launch Delays :rocket: 
 """)
 
-st.image('https://images.unsplash.com/photo-1580551730007-11f498ebb39d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTl8fHJvY2tldHxlbnwwfDB8MHw%3D&auto=format&fit=crop&w=500&q=60', width = 700)
+st.image('https://images.unsplash.com/photo-1580551730007-11f498ebb39d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTl8fHJvY2tldHxlbnwwfDB8MHw%3D&auto=format&fit=crop&w=500&q=60', width = 400)
 
 crew = st.selectbox('0 - Uncrewed,  1 - Crewed ', (0, 1))
 
@@ -70,26 +70,30 @@ condition = st.selectbox(
 # value = st.selectbox("Condition", options, format_func=lambda x: display[x])
 # condition = value
 
+from tensorflow.keras.models import load_model
+model = load_model('rocket.h5', compile=False)
 
 predictions = [crew,
 high_temp,
 low_temp,
 ave_temp,
+0,
 hist_high_temp,
 hist_low_temp,
 hist_ave_temp,
 precipitation,
 hist_ave_precipitation,
-wind_direction,
+0,
 max_wind_speed,
 visibility,
 wind_speed,
-condition ]
+0 ]
 
 labels = ('crew',
 'high_temp',
 'low_temp',
 'ave_temp',
+'temp_at_launch',
 'hist_high_temp',
 'hist_low_temp',
 'hist_ave_temp',
@@ -101,11 +105,13 @@ labels = ('crew',
 'wind_speed',
 'condition')
 import pandas as pd
-x = pd.Series(predictions, index = labels) 
+import numpy as np
 
-import random
-n = random.randint(0,1)
-pred = n
+x = pd.Series(predictions, index = labels) 
+x = np.asarray(x).astype(np.float32)
+x = x.reshape(1, 15)
+pred = model.predict(x)
+pred = pred[0]
 
 if st.sidebar.button('READY ?'):
     if pred == 1:
@@ -113,7 +119,7 @@ if st.sidebar.button('READY ?'):
         st.balloons()
     else: 
         st.sidebar.write('Scrub the Launch :disappointed:')
-
+st.write('When done, click on the slider and press READY :arrow_forward:')
     
 
 ## As part of the data cleaning process, we have to convert text data to numerical because computers understand only numbers
