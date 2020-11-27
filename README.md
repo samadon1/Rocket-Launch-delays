@@ -1,5 +1,5 @@
 # Rocket-Launch-delays
-Both a decision tree classifier and a neural network to gain knowledge from raw weather and rocket launch data.
+Both a decision tree classifier and a neural network classifier to gain knowledge from raw weather and rocket launch data and predicts whether a launch is likely to be able to happen given specific weather conditions like cloud temperature, precipitation intensity and rocket velocity.
 
 # Demo
 [Here a link of a working app](https://rocket-launch-delays.herokuapp.com/)
@@ -21,3 +21,12 @@ Under the hood, this project uses the tensorflow library to create a machine lea
 # Usage 
 1. Download and open the repository
 2. Run `streamlit run rocket.py` in the shell
+
+# Deployment
+To deploy to heroku navigate to the deployment directory.
+Login to your heroku(`heroku login`) account and run 
+ 1. `git init'`
+ 2. `git add'`
+ 3. `git commit -m 'commit message'`
+ 4. `git heroku master push`
+ 5. `heroku ps:scale web=1`
