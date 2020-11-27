@@ -2,7 +2,7 @@
 Both a decision tree classifier and a neural network classifier to gain knowledge from raw weather and rocket launch data and predicts whether a launch is likely to be able to happen given specific weather conditions like cloud temperature, precipitation intensity and rocket velocity.
 
 # Demo
-[Here a link of a working app](https://rocket-launch-delays.herokuapp.com/)
+[This is a link to a working app](https://rocket-launch-delays.herokuapp.com/)
 
 # Motivation 
 Because large amounts of data are now available, weather predictions are more accurate than in the past, even taking into account the changing climate. But the stakes during a rocket launch are very high. It's not just that the astronauts might get cold because they didn't know they should bring a jacket. If NASA schedules the launch on the wrong day, it can be life-threatening. So to get the most accurate picture of what the rocket will have to endure on its 100 kilometer journey into space. Some key factors that NASA takes into account regarding launches are:
